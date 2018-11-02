@@ -1,9 +1,7 @@
 import { GET_TODOS, ADD_TODO, COMPLETE_TODO } from '../actions/types'
 const uuid = require('uuid/v4')
 
-const initialState = []
-
-export default function (state = initialState, action) {
+export default function (state = [], action) {
   switch (action.type) {
     case GET_TODOS:
       return state

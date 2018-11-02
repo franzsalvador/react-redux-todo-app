@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { addToDo, completeToDo } from './actions/to-do-actions'
+import { addToDo, completeToDo } from './actions/todo-actions'
 
 class ToDoList extends Component {
   constructor(props) {
