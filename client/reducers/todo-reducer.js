@@ -1,11 +1,10 @@
-import { GET_TODOS, ADD_TODO, COMPLETE_TODO } from '../actions/types'
 const uuid = require('uuid/v4')
 
 export default function (state = [], action) {
   switch (action.type) {
-    case GET_TODOS:
+    case 'GET_TODOS':
       return state
-    case ADD_TODO:
+    case 'ADD_TODO':
       return [
         ...state, {
           id: uuid(),
@@ -13,7 +12,7 @@ export default function (state = [], action) {
           isDone: false
         }
       ]
-    case COMPLETE_TODO:
+    case 'COMPLETE_TODO':
       return state.map(toDo =>
         (toDo.id === action.id)
           ? {...toDo, isDone: !toDo.isDone}
