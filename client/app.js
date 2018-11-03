@@ -39,6 +39,13 @@ class ToDoList extends Component {
     const { input } = this.state
     const { toDos } = this.props
     const { onSubmit, onChange, onClick } = this
+    let remainingTasks = 0
+    toDos.forEach(item => {
+      if (item.isDone === false) {
+        remainingTasks += 1
+      }
+    })
+    const statusMessage = remainingTasks + ' remaining out of ' + toDos.length + ' tasks'
     return (
       <div>
         <div>
@@ -50,7 +57,7 @@ class ToDoList extends Component {
             </input>
             <button type='submit'>Submit</button>
           </form>
-          {/* <div className='task-counter'>{statusMessage}</div> */}
+          <div className='task-counter'>{statusMessage}</div>
           <ul>
             {toDos.map((toDo, index) => <li key={index} data-key={toDo.id} onClick={onClick} className={toDo.isDone ? 'is-done' : ''}>{toDo.item}</li>)}
           </ul>
