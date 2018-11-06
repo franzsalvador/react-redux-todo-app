@@ -8,13 +8,13 @@ export default function (state = [], action) {
       return [
         ...state, {
           id: uuid(),
-          item: action.toDo,
+          item: action.payload.toDo,
           isDone: false
         }
       ]
     case 'COMPLETE_TODO':
       return state.map(toDo =>
-        (toDo.id === action.id)
+        (toDo.id === action.payload.id)
           ? {...toDo, isDone: !toDo.isDone}
           : toDo
       )
