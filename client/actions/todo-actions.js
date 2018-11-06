@@ -7,13 +7,17 @@ export const getToDos = () => {
 export const addToDo = toDo => {
   return {
     type: 'ADD_TODO',
-    toDo
+    payload: {
+      toDo: toDo
+    }
   }
 }
 
 export const completeToDo = id => {
   return {
     type: 'COMPLETE_TODO',
-    id
+    payload: {
+      id: id
+    }
   }
 }
