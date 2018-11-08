@@ -11,12 +11,19 @@
 .input {
   background: white;
   margin: 0 auto;
+  border: none;
 }
 
 .button {
   color: white;
   background: none;
   margin-left: 1rem;
+  border-radius: 5%;
+  border-color: white;
+}
+
+.button:hover {
+  background: white;
 }
 
 .text {

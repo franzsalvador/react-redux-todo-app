@@ -55,7 +55,7 @@ class ToDoList extends Component {
           <form className="form" onSubmit={onSubmit}>
             <input className="input" value={input} onChange={onChange}>
             </input>
-            <button className="button" type='submit'>Submit</button>
+            <button className="btn btn-light btn-sm button" type='submit'>Submit</button>
           </form>
           <div className='status-message'>{statusMessage}</div>
           <ul className="list">
