@@ -1,5 +1,4 @@
 import toDoReducer from './todo-reducer'
-const uuid = require('uuid/v4')
 
 describe('toDoReducer', () => {
   it('should return the initial state', () => {
