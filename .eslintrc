@@ -2,9 +2,11 @@
   "env": {
     "browser": true,
     "node": true,
-    "es6": true
+    "es6": true,
+    "jest/globals": true
   },
-  "extends": ["standard", "plugin:react/recommended"],
+  "plugins": ["jest"],
+  "extends": ["standard", "plugin:react/recommended", "jest-enzyme"],
   "rules": {
     "padded-blocks": 0,
     "curly": ["error", "multi-line"],
@@ -14,6 +16,11 @@
       "anonymous": "always",
       "named": "never",
       "asyncArrow": "always"
-    }]
+    }],
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
   }
 }

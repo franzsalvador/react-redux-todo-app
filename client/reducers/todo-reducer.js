@@ -1,6 +1,6 @@
 const uuid = require('uuid/v4')
 
-export default function (state = [], action) {
+export default (state = [], action) => {
   switch (action.type) {
     case 'GET_TODOS':
       return state
