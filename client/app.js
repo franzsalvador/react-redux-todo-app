@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+
 import { addToDo, completeToDo } from './actions/todo-actions'
 
 class ToDoList extends Component {
@@ -22,7 +23,6 @@ class ToDoList extends Component {
     const { completeToDo } = this.props
     const id = e.target.getAttribute('data-key')
     completeToDo(id)
-
   }
   onSubmit(e) {
     e.preventDefault()
@@ -34,7 +34,6 @@ class ToDoList extends Component {
     addToDo(input)
     this.setState({ input: '' })
   }
-
   render() {
     const { input } = this.state
     const { toDos } = this.props
@@ -50,12 +49,12 @@ class ToDoList extends Component {
       <div>
         <div>
           <h2 className="text">
-              Todo List
+            Todo List
           </h2>
-          <form className="form" onSubmit={onSubmit}>
+          <form className="form" onSubmit={onSubmit} data-test='form'>
             <input className="input" value={input} onChange={onChange}>
             </input>
-            <button className="btn btn-light btn-sm button" type='submit'>Submit</button>
+            <button className="btn btn-light btn-sm button" type='submit' data-test='component-button'>Submit</button>
           </form>
           <div className='status-message'>{statusMessage}</div>
           <ul className="list">
@@ -83,9 +82,9 @@ ToDoList.propTypes = {
   completeToDo: PropTypes.func.isRequired
 }
 
-const mapStateToProps = (state) => ({toDos: state.toDos})
+const mapStateToProps = (state) => ({ toDos: state.toDos })
 
 export default connect(
   mapStateToProps,
-  {addToDo, completeToDo}
+  { addToDo, completeToDo }
 )(ToDoList)
