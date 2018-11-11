@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-
 import { addToDo, completeToDo } from './actions/todo-actions'
+import ToDoList from './components/todo-list'
 
-class ToDoList extends Component {
+class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -46,38 +46,28 @@ class ToDoList extends Component {
     })
     const statusMessage = remainingTasks + ' remaining out of ' + toDos.length + ' tasks'
     return (
-      <div>
+      <div data-test='component-app'>
         <div>
-          <h2 className="text">
+          <h2 className='text'>
             Todo List
           </h2>
-          <form className="form" onSubmit={onSubmit} data-test='form'>
-            <input className="input" value={input} onChange={onChange}>
+          <form className='form' onSubmit={onSubmit} data-test='component-form'>
+            <input className='input' value={input} onChange={onChange}>
             </input>
-            <button className="btn btn-light btn-sm button" type='submit' data-test='component-button'>Submit</button>
+            <button className='btn btn-light btn-sm button' type='submit' data-test='component-button'>Submit</button>
           </form>
           <div className='status-message'>{statusMessage}</div>
-          <ul className="list">
-            {toDos.map((toDo, index) => <li
-              key={index}
-              data-key={toDo.id} onClick={onClick}
-              className={toDo.isDone ? 'is-done list-items' : 'list-items'}>
-              {toDo.item}
-            </li>)}
-          </ul>
+          <ToDoList
+            toDos={toDos}
+            onClick={onClick}
+          />
         </div>
-        <style>{`
-            .is-done {
-                text-decoration: line-through;
-            }
-        `}</style>
       </div>
     )
   }
 }
 
-ToDoList.propTypes = {
-  toDos: PropTypes.array.isRequired,
+App.propTypes = {
   addToDo: PropTypes.func.isRequired,
   completeToDo: PropTypes.func.isRequired
 }
@@ -87,4 +77,4 @@ const mapStateToProps = (state) => ({ toDos: state.toDos })
 export default connect(
   mapStateToProps,
   { addToDo, completeToDo }
-)(ToDoList)
+)(App)
